@@ -1,0 +1,182 @@
+# <MainScreen>:
+#
+#     name: "main"
+#     login_id: login_id
+#     password: password
+#     status: status
+#     GridLayout:
+#         cols: 1
+#         # size_hint_x: 0.5, None
+#         Label:
+#             text: "Welcome to the Reflective Learning App"
+#             font_size: '35sp'
+#             color: 0.4,0.3,1,1
+#             # multiline: True
+#             size_hint: 1, None
+#             padding: [0.2,0.2]
+#         GridLayout:
+#             cols: 1
+#
+#             GridLayout:
+#                 cols: 2
+#
+#                 Label:
+#                     text: "Log in ID"
+#                     font_size: '30sp'
+#                     size_hint: 1, None
+#                     padding: [0.2,0.2]
+#                 TextInput:
+#                     id: login_id
+#                     multiline: False
+#                     size_hint: 1, None
+#                     font_size: '30sp'
+#                     hint_text: 'Enter Username'
+#                     padding: [0.2,0.2,0.2,0.2]
+#                 Label:
+#                     text: 'Password'
+#                     font_size: '30sp'
+#                     size_hint: 1, None
+#                     padding: [0.2,0.2]
+#                 TextInput:
+#                     id: password
+#                     multiline: False
+#                     size_hint: 1, None
+#                     font_size: '30sp'
+#                     hint_text: 'Enter Password'
+#                     password: True
+#                     padding: [0.2,0.2,0.2,0.2]
+#         Button:
+#             text: 'Submit'
+#             size_hint: 1, None
+#             padding: [0.2,0.2]
+#             on_press: root.user_login()
+#
+#         Label:
+#             id: status
+#             size_hint: 1, None
+#             padding: [0.2,0.2]
+<MainScreen>:
+
+    name: "main"
+    login_id: login_id
+    password: password
+    status: status
+
+    GridLayout:
+        rows: 1
+        pos_hint: {'center_x':.5,'center_y':0.4}
+        Label:
+            text: "Welcome to the Reflective Learning App"
+            font_size: '35sp'
+            color: 0.4,0.3,1,1
+            # multiline: True
+            size_hint_x: 6
+            size_hint_y : 0
+            padding: [0.2,0.2]
+
+    GridLayout:
+        cols: 2
+        pos_hint: {'center_x':.45,'center_y':0.3}
+        row_force_default:True
+        size_hint : 0.5,1
+        row_default_height:40
+
+
+        Label:
+            text: "Log in ID"
+            font_size: '30sp'
+            #size_hint_x: None
+            #width : 1500
+            #size_hint_x: 6
+            #size_hint_y: 3
+            padding: [0.2,0.2]
+        TextInput:
+            id: login_id
+            multiline: False
+            size_hint_x: None
+            width : 300
+            #size_hint_y: 3
+            font_size: '30sp'
+            hint_text: 'Enter Username'
+            padding: [0.2,0.2,0.2,0.2]
+        Label:
+            text: 'Password'
+            font_size: '30sp'
+            padding: [0.2,0.2]
+        TextInput:
+            id: password
+            multiline: False
+            size_hint_x: None
+            width : 300
+            font_size: '30sp'
+            hint_text: 'Enter Password'
+            password: True
+            padding: [0.2,0.2,0.2,0.2]
+
+    GridLayout:
+        rows: 1
+        pos_hint: {'center_x':0.5,'center_y':0.1}
+        row_force_default:True
+        row_default_height:50
+        size_hint : 0.2,1
+
+        Button:
+            text: 'Submit'
+            padding: [0.2,0.2]
+            on_press: root.user_login()
+
+        Label:
+            id: status
+            size_hint_x: None
+            padding: [0.2,0.2]
+
+
+<AdminScreen>:
+    name: 'admin'
+    topic : new_topic
+    status: status
+    GridLayout:
+        rows: 5
+        Label:
+            text: 'You can add new topics here'
+            size_hint: 1, None
+            font_size: '25sp'
+        GridLayout:
+            cols: 2
+            Label:
+                text: 'Enter Topic'
+                size_hint: 1, None
+                font_size: '25sp'
+            TextInput:
+                id: new_topic
+                size_hint: 1, None
+                font_size: '25sp'
+        Button:
+            text: 'Add topic'
+            on_press: root.add_new_topic()
+            size_hint: 1, None
+        Button:
+            text: 'Debug'
+            on_press: root.debug()
+            size_hint: 1,None
+        Label:
+            id: status
+            size_hint: 1, None
+            font_size: '20sp'
+            
+            
+<DebugScreen>:
+    name: 'ds'
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 20
+        rows: 2
+        Button:
+            text: 'Compare Keywords'
+            size_hint: 1, None
+            on_press: root.compare_keywords()
+            
+        Button:
+            text: 'Back'
+            size_hint: 1, None
+            on_press: root.back()

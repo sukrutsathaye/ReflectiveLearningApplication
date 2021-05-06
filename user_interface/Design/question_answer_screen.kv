@@ -1,0 +1,174 @@
+<QuestionAnswerScreen>:
+    name: 'qas'
+    question: question
+    option1: option1
+    option2: option2
+    option3: option3
+    option4: option4
+    status: status
+    GridLayout:
+        cols: 1
+        Label:
+            id: question
+            font_size: '20sp'
+            size_hint_y: 0.5
+            height: self.texture_size[1]
+            text_size: self.width, None
+        Label:
+            text: 'Choose from the following Options'
+            size_hint: 1, None
+            font_size: '18sp'
+        BoxLayout:
+            cols: 2
+            size_hint: 1, None
+            Button:
+                id: option1
+                size_hint: 1, None
+                font_size: '20sp'
+                on_press: root.option_selected(self)
+            Button:
+                id: option2
+                size_hint: 1, None
+                font_size: '20sp'
+                on_press: root.option_selected(self)
+            Button:
+                id: option3
+                size_hint: 1, None
+                font_size: '20sp'
+                on_press: root.option_selected(self)
+            Button:
+                id: option4
+                size_hint: 1, None
+                font_size: '20sp'
+                on_press: root.option_selected(self)
+        Label:
+            id: status
+            size_hint: 1, None
+            font_size: '20sp'
+
+
+<AnalysisPopUp>:
+    cols: 1
+    Label:
+        text: 'Questions Done,\nGo to Analysis?'
+        size_hint: 1, None
+    BoxLayout:
+        cols: 2
+        Button:
+            text: 'yes'
+            on_release: root.yes_or_no(self)
+            size_hint: 1, None
+        Button:
+            text: 'no'
+            on_release: root.yes_or_no(self)
+            size_hint: 1, None
+
+
+<AnalysisScreen>:
+    name: 'analysis'
+    marks: marks
+    wrong_questions: wrong_questions
+    BoxLayout:
+        orientation: 'vertical'
+        rows: 3
+        padding: 20
+        Label:
+            id: marks
+            size_hint: 1, None
+            font_size: '18sp'
+        
+        ScrollView:
+            do_scroll_y: True
+            size_hint: 1, 0.9
+            padding: 20
+            Label:
+                id: wrong_questions
+                multiline: True
+                size_hint_y: None
+                height: self.texture_size[1]
+                text_size: self.width, None
+                padding: 10, 10
+                font_size: '28sp'
+        BoxLayout:
+            cols: 2
+            padding: 20
+            size_hint: 1, None
+            Button:
+                text: 'Continue Learning'
+                on_press: root.continue_learning()
+                size_hint: 1, None
+            Button:
+                text: 'Exit'
+                on_press: root.exit()
+                size_hint: 1, None
+
+
+<SubjectiveQuestionScreen>:
+    name: 'sub_q'
+    question: question
+    answer: answer
+    status: status
+    GridLayout:
+        cols: 1
+        Label:
+            id: question
+            size_hint_y: 0.5
+            height: self.texture_size[1]
+            text_size: self.width, None
+            font_size: '30sp'
+        TextInput:
+            id: answer
+            size_hint: 1, None
+            font_size: '30sp'
+            multiline: True
+        Button:
+            text: 'Submit'
+            size_hint: 1, None
+            on_press: root.check_answer()
+            font_size: '20sp'
+        Label:
+            id: status
+            size_hint: 1, None
+            font_size: '20sp'
+            
+            
+<DefQuesAnalysisScreen>:
+    name: 'dqas'
+    topic_name: topic_name
+    display: display
+    BoxLayout:
+        orientation: 'vertical'
+        rows: 3
+        padding: 20
+        Label:
+            id: topic_name
+            font_size: '20sp'
+            size_hint: 1, None
+        ScrollView:
+            do_scroll_y: True
+            size_hint: 1, 0.9
+            padding: 20
+            Label:
+                id: display
+                multiline: True
+                size_hint_y: None
+                height: self.texture_size[1]
+                text_size: self.width, None
+                padding: 10, 10
+                font_size: '28sp'
+                
+        BoxLayout:
+            size_hint: 1, None
+            padding: 10
+            Button:
+                text: 'Continue Learning'
+                on_press: root.continue_learning()
+                size_hint: 1, None
+                font_size: '20sp'
+            Button:
+                text: 'Exit'
+                on_press: root.quit_program()
+                size_hint: 1,None
+                font_size: '20sp'
+            
+        

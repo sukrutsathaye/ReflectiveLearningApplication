@@ -1,0 +1,71 @@
+<StudentTopic>:
+    name: 'student_topic'
+    previous_btn: previous_btn
+    next_btn: next_btn
+    topic_heading: topic_heading
+    topic_text: topic_text
+    scroll: scroll
+    subjective_question_btn: sqb
+
+    BoxLayout:
+        # size: root.width -100, root.height - 100
+        orientation: 'vertical'
+        rows: 3
+        # size_hint: 1, None
+        Label:
+            id: topic_heading
+            size_hint: 1, None
+            font_size: '25sp'
+        ScrollView:
+            id: scroll
+            do_scroll_y: True
+            size_hint: 1, 1
+            Label:
+                id: topic_text
+                multiline: True
+                # text_size: self.size
+                # size_hint_x: 0.2
+                # height: self.minimum_height
+                size_hint_y: None
+                height: self.texture_size[1]
+                text_size: self.width, None
+                padding: 10, 10
+                font_size: '25sp'
+
+        BoxLayout:
+            cols: 2
+            size_hint: 1, None
+            Button:
+                id: previous_btn
+                text: 'Previous Chapter'
+                on_press: root.disp_previous(self)
+                size_hint: 1, None
+            Button:
+                id: next_btn
+                text: 'Next Chapter'
+                on_press: root.disp_next(self)
+                size_hint: 1, None
+            Button:
+                text: 'Multiple Choice Questions'
+                on_release: root.show_popup()
+                size_hint: 1, None
+            Button:
+                id: sqb
+                text: 'Definition Questions'
+                size_hint: 1, None
+                on_press: root.disp_subjective_questions(self)
+
+
+<PopUpQues>:
+    cols: 1
+    no_of_ques: no_of_ques
+    Label:
+        text: "No. of questions to answer"
+
+    TextInput:
+        id: no_of_ques
+
+    Button:
+        text: "Select"
+        on_press: root.get_no_questions()
+

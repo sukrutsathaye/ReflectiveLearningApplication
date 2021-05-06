@@ -1,0 +1,170 @@
+<TeacherTopic>:
+    name: 'teacher_topic'
+    GridLayout:
+        cols: 1
+        Label:
+            text: 'Choose from the following'
+            size_hint: 1, None
+            font_size: '20sp'
+
+        GridLayout:
+            cols: 2
+            Button:
+                text: 'Correct Keywords'
+                on_press: root.correct_kw()
+                size_hint: 0.5, None
+                font_size: '20sp'
+            Button:
+                text: 'View Questions'
+                on_press: root.view_ques()
+                size_hint: 0.5, None
+                font_size: '20sp'
+            Button:
+                text: 'Correct Questions'
+                on_press: root.correct_ques()
+                size_hint: 0.5, None
+                font_size: '20sp'
+            Button:
+                text: 'Exit'
+                on_press: root.exit_program()
+                size_hint: 0.5, None
+                font_size: '20sp'
+                
+
+
+
+<CorrectKWScreen>:
+    name: 'c_kw'
+    keyword: keyword
+    topic_name: topic
+    correct_answer: correct_answer
+    total_keywords: total_keywords
+    incorrect_btn: incorrect_btn
+    correct_btn: correct_btn
+    GridLayout:
+        cols: 1
+        Label:
+            id: topic
+            size_hint: 1, None
+            font_size: '35sp'
+        Label:
+            id: keyword
+            size_hint: 1, None
+            font_size: '35sp'
+        Label:
+            id: correct_answer
+            size_hint: 1, None
+            font_size: '35sp'
+        Label:
+            id: total_keywords
+            size_hint: 1, None
+            font_size: '35sp'
+        BoxLayout:
+            cols: 4
+            Button:
+                id: incorrect_btn
+                text: 'Incorrect Keyword'
+                size_hint: 1, None
+                on_press: root.incorrect_kw(self)
+            Button:
+                id: correct_btn
+                text: 'Correct Keyword'
+                size_hint: 1, None
+                on_press: root.corrected_keywords(self)
+            Button:
+                text: 'Back'
+                size_hint: 1, None
+                on_press: root.back()
+            Button:
+                text: 'Exit'
+                size_hint: 1, None
+                on_press: root.exit_program()
+
+<DispQuestions>:
+    name: 'disp_ques_teacher'
+    topic_label: topic
+    questions_label: questions
+    BoxLayout:
+        orientation: 'vertical'
+        rows: 3
+        #size_hint_y : None
+        #height : 40
+        Label:
+            id: topic
+            font_size: '20sp'
+            size_hint: 1, None
+        ScrollView:
+            do_scroll_y: True
+            #size_hint : 1,0.5
+            #bar_width: 10
+            #bar_color: 1, 0, 0, 1
+            #scroll_distance:100
+            Label:
+                id: questions
+                multiline: True
+                # text_size: self.size
+                # size_hint_x: 0.2
+                # height: self.minimum_height
+                size_hint_y: None
+                height: self.texture_size[1]
+                text_size: self.width, None
+                padding: 10, 10
+                font_size: '20sp'
+
+        BoxLayout:
+            orientation: 'horizontal'
+            cols:3
+            row_force_default:True
+            size_hint : 1,None
+            row_default_height:20
+            padding : 20
+            Button:
+                text: 'Back'
+                on_press: root.back()
+                #size_hint: 0.5, None
+            Button:
+                text: 'Main Screen'
+                on_press: root.disp_main_screen()
+                #size_hint: 1, None
+            Button:
+                text: 'Exit'
+                #size_hint: 1, None
+                on_press: root.exit_program()
+                
+
+<CorrectSQScreen>:
+    name: 'csq'
+    back_btn : back_btn
+    approve_btn : approve_btn
+    disapprove_btn : disapprove_btn
+    disp_q : disp_q
+    text_inpt : text_inpt
+    GridLayout:
+        rows: 3
+        Label:
+            id: disp_q
+            size_hint: 1, None
+            font_size: '20sp'
+        TextInput:
+            id: text_inpt
+            size_hint: 1, None
+            multiline: True
+            font_size: '20sp'
+        BoxLayout:
+            orientation: 'horizontal'
+            Button:
+                text: 'Approve Question'
+                id: approve_btn
+                size_hint: 1, None
+                on_press: root.approved_question()
+            Button:
+                text: 'Correct Question'
+                id: disapprove_btn
+                size_hint: 1, None
+                on_press: root.disapproved_question()
+            Button:
+                text: 'Home Page'
+                id: back_btn
+                size_hint: 1, None
+                on_press: root.back()
+
